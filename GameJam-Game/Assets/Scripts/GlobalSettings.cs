@@ -2,6 +2,7 @@
 
 namespace Nidavellir
 {
+    // fooo
     public class GlobalSettings
     {
         private static GlobalSettings s_instance;
