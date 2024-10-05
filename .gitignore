@@ -161,3 +161,5 @@ API/**/bin
 
 # Discord Rich Presence
 discord.xml
+
+.idea
