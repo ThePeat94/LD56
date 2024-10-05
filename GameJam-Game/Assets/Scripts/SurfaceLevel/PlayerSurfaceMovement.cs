@@ -1,5 +1,6 @@
 using System;
 using Nidavellir.Input;
+using TMPro;
 using UnityEngine;
 
 namespace Nidavellir
@@ -23,6 +24,8 @@ namespace Nidavellir
         private float cooldownTimer = 0f; 
         private bool isBoosting = false; 
         
+        public TMP_Text boostText;
+        
         public SurfaceGameManager gameManager;
 
         void Start()
@@ -30,6 +33,7 @@ namespace Nidavellir
             m_rb = GetComponent<Rigidbody2D>();
             m_inputProcessor = GetComponent<InputProcessor>();
             blood.SetActive(false);
+            boostText.text = "Boost available";
         }
 
         private void FixedUpdate()
@@ -40,6 +44,7 @@ namespace Nidavellir
             {
                 isBoosting = true;
                 boostTimer = boostDuration;  
+                boostText.text = "Boosting!";
             }
 
             if (isBoosting)
@@ -57,13 +62,23 @@ namespace Nidavellir
             if (m_inputProcessor.IsBoosting && cooldownTimer <= 0f && !isBoosting)
             {
                actualSpeed = boostMultiplier * speed;
-               
             }
             
             m_rb.MovePosition(m_rb.position + m_inputProcessor.Movement * (actualSpeed * Time.fixedDeltaTime));
             
             if (cooldownTimer > 0f)
             {
+                if (m_inputProcessor.IsBoosting)
+                {
+                    boostText.color = Color.red;
+                    boostText.fontStyle = FontStyles.Bold;
+                }
+                else
+                {
+                    boostText.color = Color.white;
+                    boostText.fontStyle = FontStyles.Normal;
+                }
+                boostText.text = "Next Boost in "+Mathf.Floor(cooldownTimer)+" seconds";
                 cooldownTimer -= Time.fixedDeltaTime;
             }
         }
