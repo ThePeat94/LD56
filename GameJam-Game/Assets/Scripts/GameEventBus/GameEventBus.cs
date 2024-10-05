@@ -17,12 +17,19 @@ namespace Nidavellir.GameEventBus
         {
             s_eventBindings.Remove(eventBinding);
         }
+        
+        public static void Invoke(object sender)
+        {
+            foreach (var eventBinding in s_eventBindings)
+            {
+                eventBinding.Invoke(sender);
+            }
+        }
     
         public static void Invoke(object sender, T args)
         {
             foreach (var eventBinding in s_eventBindings)
             {
-                eventBinding.Invoke(sender);
                 eventBinding.Invoke(sender, args);
             }
         }

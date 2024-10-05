@@ -10,11 +10,17 @@ namespace Nidavellir.Scriptables
     [CreateAssetMenu(fileName = "Resource", menuName = "Resource", order = 0)]
     public class Resource : ScriptableObject
     {
+        [SerializeField] private string m_name;
+        [SerializeField] private string m_description;
+        [SerializeField] private Sprite m_icon;
         [SerializeField] private ResourceData m_resourceData;
 
         private ResourceController m_resourceController;
 
         public ResourceController ResourceController => this.m_resourceController;
+        public string Name => this.m_name;
+        public string Description => this.m_description;
+        public Sprite Icon => this.m_icon;
 
         private void Awake()
         {

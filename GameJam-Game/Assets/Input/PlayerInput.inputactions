@@ -324,6 +324,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "13ea20c1-00bd-4cba-bd13-60d1a7393b35",
+            "actions": [
+                {
+                    "name": "SimulateAddFoodStorage",
+                    "type": "Button",
+                    "id": "18b5e81e-fa62-4b3c-be1f-9188af49b1e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SimulateAddSleepingRoom",
+                    "type": "Button",
+                    "id": "6477b832-eb40-4860-8caa-55e49e259e52",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4f47fa28-ab46-4c9d-a5c4-3e9bef7dd379",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SimulateAddFoodStorage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c310c2ee-941f-4cae-9313-7a58505862b8",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SimulateAddSleepingRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

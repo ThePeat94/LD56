@@ -346,6 +346,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""13ea20c1-00bd-4cba-bd13-60d1a7393b35"",
+            ""actions"": [
+                {
+                    ""name"": ""SimulateAddFoodStorage"",
+                    ""type"": ""Button"",
+                    ""id"": ""18b5e81e-fa62-4b3c-be1f-9188af49b1e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SimulateAddSleepingRoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""6477b832-eb40-4860-8caa-55e49e259e52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4f47fa28-ab46-4c9d-a5c4-3e9bef7dd379"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SimulateAddFoodStorage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c310c2ee-941f-4cae-9313-7a58505862b8"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SimulateAddSleepingRoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -359,6 +407,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions_BackToMenu = m_Actions.FindAction("BackToMenu", throwIfNotFound: true);
         m_Actions_Boost = m_Actions.FindAction("Boost", throwIfNotFound: true);
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
+        m_Debug_SimulateAddSleepingRoom = m_Debug.FindAction("SimulateAddSleepingRoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -510,6 +562,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public ActionsActions @Actions => new ActionsActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private List<IDebugActions> m_DebugActionsCallbackInterfaces = new List<IDebugActions>();
+    private readonly InputAction m_Debug_SimulateAddFoodStorage;
+    private readonly InputAction m_Debug_SimulateAddSleepingRoom;
+    public struct DebugActions
+    {
+        private @PlayerInput m_Wrapper;
+        public DebugActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SimulateAddFoodStorage => m_Wrapper.m_Debug_SimulateAddFoodStorage;
+        public InputAction @SimulateAddSleepingRoom => m_Wrapper.m_Debug_SimulateAddSleepingRoom;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void AddCallbacks(IDebugActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DebugActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Add(instance);
+            @SimulateAddFoodStorage.started += instance.OnSimulateAddFoodStorage;
+            @SimulateAddFoodStorage.performed += instance.OnSimulateAddFoodStorage;
+            @SimulateAddFoodStorage.canceled += instance.OnSimulateAddFoodStorage;
+            @SimulateAddSleepingRoom.started += instance.OnSimulateAddSleepingRoom;
+            @SimulateAddSleepingRoom.performed += instance.OnSimulateAddSleepingRoom;
+            @SimulateAddSleepingRoom.canceled += instance.OnSimulateAddSleepingRoom;
+        }
+
+        private void UnregisterCallbacks(IDebugActions instance)
+        {
+            @SimulateAddFoodStorage.started -= instance.OnSimulateAddFoodStorage;
+            @SimulateAddFoodStorage.performed -= instance.OnSimulateAddFoodStorage;
+            @SimulateAddFoodStorage.canceled -= instance.OnSimulateAddFoodStorage;
+            @SimulateAddSleepingRoom.started -= instance.OnSimulateAddSleepingRoom;
+            @SimulateAddSleepingRoom.performed -= instance.OnSimulateAddSleepingRoom;
+            @SimulateAddSleepingRoom.canceled -= instance.OnSimulateAddSleepingRoom;
+        }
+
+        public void RemoveCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDebugActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DebugActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     public interface IActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -519,5 +625,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnBackToMenu(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnSimulateAddFoodStorage(InputAction.CallbackContext context);
+        void OnSimulateAddSleepingRoom(InputAction.CallbackContext context);
     }
 }
