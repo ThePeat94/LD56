@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Nidavellir.Rooms
 {
-    public class SleepingRoom : MonoBehaviour
+    public class SleepingRoom : Room
     {
-        public void PlaceRoom()
+        public override void PlaceRoom()
         {
             GameEventBus<SleepingRoomPlacedEvent>.Invoke(this, new(4));
         }

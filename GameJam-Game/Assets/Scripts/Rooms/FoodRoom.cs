@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Nidavellir.Rooms
 {
-    public class FoodRoom : MonoBehaviour
+    public class FoodRoom : Room
     {
-        public void PlaceRoom()
+        public override void PlaceRoom()
         {
             GameEventBus<FoodRoomPlacedEvent>.Invoke(this, new(50));
         }
