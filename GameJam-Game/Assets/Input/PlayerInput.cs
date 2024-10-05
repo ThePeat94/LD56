@@ -394,6 +394,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Elevator"",
+            ""id"": ""4cf4d777-5c6d-473c-be7f-af6eeb3a6b80"",
+            ""actions"": [
+                {
+                    ""name"": ""GoUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""134d5572-30a1-4589-bd46-2555545a9ebe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""deec0f18-cc77-4c7f-9b5d-d74ad7081c4f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""837ebc1b-b39f-4ce8-9582-d9370d2f7e6b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GoUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf072eda-1354-4fd7-b8be-c770350c0c2f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GoDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -411,6 +459,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
         m_Debug_SimulateAddSleepingRoom = m_Debug.FindAction("SimulateAddSleepingRoom", throwIfNotFound: true);
+        // Elevator
+        m_Elevator = asset.FindActionMap("Elevator", throwIfNotFound: true);
+        m_Elevator_GoUp = m_Elevator.FindAction("GoUp", throwIfNotFound: true);
+        m_Elevator_GoDown = m_Elevator.FindAction("GoDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -616,6 +668,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public DebugActions @Debug => new DebugActions(this);
+
+    // Elevator
+    private readonly InputActionMap m_Elevator;
+    private List<IElevatorActions> m_ElevatorActionsCallbackInterfaces = new List<IElevatorActions>();
+    private readonly InputAction m_Elevator_GoUp;
+    private readonly InputAction m_Elevator_GoDown;
+    public struct ElevatorActions
+    {
+        private @PlayerInput m_Wrapper;
+        public ElevatorActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @GoUp => m_Wrapper.m_Elevator_GoUp;
+        public InputAction @GoDown => m_Wrapper.m_Elevator_GoDown;
+        public InputActionMap Get() { return m_Wrapper.m_Elevator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ElevatorActions set) { return set.Get(); }
+        public void AddCallbacks(IElevatorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ElevatorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ElevatorActionsCallbackInterfaces.Add(instance);
+            @GoUp.started += instance.OnGoUp;
+            @GoUp.performed += instance.OnGoUp;
+            @GoUp.canceled += instance.OnGoUp;
+            @GoDown.started += instance.OnGoDown;
+            @GoDown.performed += instance.OnGoDown;
+            @GoDown.canceled += instance.OnGoDown;
+        }
+
+        private void UnregisterCallbacks(IElevatorActions instance)
+        {
+            @GoUp.started -= instance.OnGoUp;
+            @GoUp.performed -= instance.OnGoUp;
+            @GoUp.canceled -= instance.OnGoUp;
+            @GoDown.started -= instance.OnGoDown;
+            @GoDown.performed -= instance.OnGoDown;
+            @GoDown.canceled -= instance.OnGoDown;
+        }
+
+        public void RemoveCallbacks(IElevatorActions instance)
+        {
+            if (m_Wrapper.m_ElevatorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IElevatorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ElevatorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ElevatorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ElevatorActions @Elevator => new ElevatorActions(this);
     public interface IActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -630,5 +736,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnSimulateAddFoodStorage(InputAction.CallbackContext context);
         void OnSimulateAddSleepingRoom(InputAction.CallbackContext context);
+    }
+    public interface IElevatorActions
+    {
+        void OnGoUp(InputAction.CallbackContext context);
+        void OnGoDown(InputAction.CallbackContext context);
     }
 }
