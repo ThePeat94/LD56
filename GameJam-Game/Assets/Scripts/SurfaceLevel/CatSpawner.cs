@@ -19,7 +19,7 @@ public class CatSpawner : MonoBehaviour
     private float screenHeight;
 
     private Vector2 spawnPosition = new Vector2(0, 0);
-    private bool canSpawn = true;
+    public bool canSpawn = true;
 
     public Transform player;
 

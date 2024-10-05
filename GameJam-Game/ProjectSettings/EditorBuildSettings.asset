@@ -11,4 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 1fccd0608bf576e47ab1549680b397bf
+  - enabled: 1
+    path: Assets/Scenes/SurfaceLevel.unity
+    guid: bee8de1b903b4460c8edf6c0cbae8b12
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: e82901f7dfd694d209985db48b8a9905
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

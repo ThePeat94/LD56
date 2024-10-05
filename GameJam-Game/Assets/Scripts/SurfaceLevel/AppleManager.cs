@@ -18,7 +18,6 @@ namespace Nidavellir
                 applePiece.SetActive(false);
             }
             applePieces[pieces - piecesLeft].SetActive(true);
-            Debug.Log(pieces - piecesLeft);
         }
 
         public  void TakeBite()
