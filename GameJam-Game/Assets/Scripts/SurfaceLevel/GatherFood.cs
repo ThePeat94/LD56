@@ -1,5 +1,5 @@
-using System;
 using Nidavellir.Input;
+using Nidavellir.Scriptables;
 using UnityEngine;
 
 namespace Nidavellir
@@ -10,6 +10,8 @@ namespace Nidavellir
         private GameObject m_apple;
         public GameObject m_currentPiece;
         private bool hasCurrentPiece = false;
+        [SerializeField] private Resource m_foodResource;
+        
 
         private void Start()
         {
@@ -41,7 +43,7 @@ namespace Nidavellir
             {
                 hasCurrentPiece = false;
                 m_currentPiece.SetActive(false);
-                // TODO: set ressources up
+                this.m_foodResource.ResourceController.Add(1);
             }
         }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collectable
   - burrow
+  - cat
   layers:
   - Default
   - TransparentFX
