@@ -89,6 +89,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Place"",
+                    ""type"": ""Button"",
+                    ""id"": ""b65738e3-bbfd-4c10-b9ce-1c0a0611f228"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -344,6 +353,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Retry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8cbaca9-8fbd-4743-bc7c-07c137841fbe"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Place"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -455,6 +475,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions_BackToMenu = m_Actions.FindAction("BackToMenu", throwIfNotFound: true);
         m_Actions_Boost = m_Actions.FindAction("Boost", throwIfNotFound: true);
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
+        m_Actions_Place = m_Actions.FindAction("Place", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
+        m_Debug_SimulateAddSleepingRoom = m_Debug.FindAction("SimulateAddSleepingRoom", throwIfNotFound: true);
+        // Elevator
+        m_Elevator = asset.FindActionMap("Elevator", throwIfNotFound: true);
+        m_Elevator_GoUp = m_Elevator.FindAction("GoUp", throwIfNotFound: true);
+        m_Elevator_GoDown = m_Elevator.FindAction("GoDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -523,6 +552,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_BackToMenu;
     private readonly InputAction m_Actions_Boost;
     private readonly InputAction m_Actions_Retry;
+    private readonly InputAction m_Actions_Place;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -534,6 +564,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @BackToMenu => m_Wrapper.m_Actions_BackToMenu;
         public InputAction @Boost => m_Wrapper.m_Actions_Boost;
         public InputAction @Retry => m_Wrapper.m_Actions_Retry;
+        public InputAction @Place => m_Wrapper.m_Actions_Place;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -564,6 +595,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Retry.started += instance.OnRetry;
             @Retry.performed += instance.OnRetry;
             @Retry.canceled += instance.OnRetry;
+            @Place.started += instance.OnPlace;
+            @Place.performed += instance.OnPlace;
+            @Place.canceled += instance.OnPlace;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -589,6 +623,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Retry.started -= instance.OnRetry;
             @Retry.performed -= instance.OnRetry;
             @Retry.canceled -= instance.OnRetry;
+            @Place.started -= instance.OnPlace;
+            @Place.performed -= instance.OnPlace;
+            @Place.canceled -= instance.OnPlace;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -723,6 +760,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnBackToMenu(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
+        void OnPlace(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
