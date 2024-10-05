@@ -455,14 +455,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions_BackToMenu = m_Actions.FindAction("BackToMenu", throwIfNotFound: true);
         m_Actions_Boost = m_Actions.FindAction("Boost", throwIfNotFound: true);
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
-        // Debug
-        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
-        m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
-        m_Debug_SimulateAddSleepingRoom = m_Debug.FindAction("SimulateAddSleepingRoom", throwIfNotFound: true);
-        // Elevator
-        m_Elevator = asset.FindActionMap("Elevator", throwIfNotFound: true);
-        m_Elevator_GoUp = m_Elevator.FindAction("GoUp", throwIfNotFound: true);
-        m_Elevator_GoDown = m_Elevator.FindAction("GoDown", throwIfNotFound: true);
     }
 
     public void Dispose()

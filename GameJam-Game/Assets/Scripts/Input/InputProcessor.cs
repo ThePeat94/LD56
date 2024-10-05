@@ -28,6 +28,8 @@ namespace Nidavellir.Input
             remove => this.m_playerInput.Elevator.GoDown.performed -= value;
         }
 
+        public event EventHandler OnPlacePerformed;
+
         public bool IsBoosting { get; private set; }
 
         private void Awake()
@@ -35,6 +37,7 @@ namespace Nidavellir.Input
             this.m_playerInput = new PlayerInput();
             this.m_playerInput.Actions.Boost.started += this.OnBoostStarted;
             this.m_playerInput.Actions.Boost.canceled += this.OnBoostEnded;
+            this.m_playerInput.Actions.Place.started += this.HandlePlacePerformed;
         }
 
         private void Update()
@@ -71,6 +74,11 @@ namespace Nidavellir.Input
         private void OnBoostStarted(InputAction.CallbackContext ctx)
         {
             this.IsBoosting = true;
+        }
+
+        private void HandlePlacePerformed(InputAction.CallbackContext ctx)
+        {
+            this.OnPlacePerformed?.Invoke(this, new ClickInputEventArgs(ctx));
         }
     }
 }
