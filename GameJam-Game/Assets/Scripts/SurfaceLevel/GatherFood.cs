@@ -27,6 +27,9 @@ namespace Nidavellir
                  m_apple.GetComponentInParent<AppleManager>().TakeBite(); 
                  m_currentPiece.SetActive(true);
                  hasCurrentPiece = true;
+            } else if (m_inputProcessor.InteractTriggered && hasCurrentPiece)
+            {
+                DropCurrentPiece();
             }
         }
 
