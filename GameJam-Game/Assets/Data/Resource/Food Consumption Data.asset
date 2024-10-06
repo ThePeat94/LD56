@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f73d363a94348f7873659859c2d87cf, type: 3}
   m_Name: Food Consumption Data
   m_EditorClassIdentifier: 
-  m_framesBetweenConsumption: 0
-  m_consumptionPerMate: 0
+  m_framesBetweenConsumption: 150
+  m_consumptionPerMate: 0.2

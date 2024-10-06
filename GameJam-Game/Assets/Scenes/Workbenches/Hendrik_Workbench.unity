@@ -2128,8 +2128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_foodResource: {fileID: 11400000, guid: 5fa24cb9a48c74c22b35c47043e650dd, type: 2}
   m_mateResource: {fileID: 11400000, guid: 5906150067d0d4c0a83af2a09c5deb5d, type: 2}
-  m_consumptionPerMate: 0.2
-  m_framesBetweenConsumption: 50
+  m_foodConsumptionData: {fileID: 11400000, guid: 01af6c130f6ed46079977c08f045de8e, type: 2}
 --- !u!4 &1657957421
 Transform:
   m_ObjectHideFlags: 0
