@@ -1,31 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nidavellir
 {
     public class AppleSpawnManager : MonoBehaviour
     {
-        private AppleSpawnPointManager[] _appleSpawnPrefabs;
-        
-        // Start is called before the first frame update
+        private AppleSpawnPointManager[] _appleSpawner;
+        public GameObject applePrefab;
+
+        private bool shouldSpawn = true;
+
+        private int lastNumber;
+
         void Start()
         {
-            var _appleSpawnPrefabObject = GameObject.FindGameObjectsWithTag("spawner");
-            var i = 0;
-            foreach (var applepoint in _appleSpawnPrefabObject)
+            var _appleSpawnPrefabObjects = GameObject.FindGameObjectsWithTag("spawner");
+
+            _appleSpawner = new AppleSpawnPointManager[_appleSpawnPrefabObjects.Length];
+
+            for (int i = 0; i < _appleSpawnPrefabObjects.Length; i++)
             {
-                _appleSpawnPrefabs[i] = applepoint.GetComponent<AppleSpawnPointManager>();
-                i++;
+                _appleSpawner[i] = _appleSpawnPrefabObjects[i].GetComponent<AppleSpawnPointManager>();
             }
+
+            var random = Random.Range(0, _appleSpawner.Length);
+            lastNumber = random;
+            _appleSpawner[random].SpawnApple(applePrefab);
+            shouldSpawn = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            foreach (var spawner in _appleSpawnPrefabs)
+            shouldSpawn = true;
+            for (int i = 0; i < _appleSpawner.Length; i++)
             {
-                spawner.
+                if (_appleSpawner[i].hasApple()) shouldSpawn = false;
+            }
+
+            if (shouldSpawn)
+            {
+                var random = Random.Range(0, _appleSpawner.Length);
+                if (random != lastNumber)
+                {
+                    lastNumber = random;
+                    _appleSpawner[random].SpawnApple(applePrefab);
+                    shouldSpawn = false;
+                }
             }
         }
     }
