@@ -1,5 +1,6 @@
 using System.Collections;
 using Nidavellir.Input;
+using Nidavellir.Scriptables;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ namespace Nidavellir
         public int currentLife;
         public GameObject blood;
         public TMP_Text lifeText;
+        [SerializeField] private Resource resource;
 
         private bool canLoseLife = true;
         public InputProcessor m_playerInputProcessor;
@@ -37,6 +39,10 @@ namespace Nidavellir
             currentLife--;
             if (currentLife <= 0)
             {
+                if (resource.ResourceController.CurrentValue > PlayerPrefs.GetFloat("HighScore", 0))
+                {
+                    PlayerPrefs.SetFloat("HighScore", resource.ResourceController.CurrentValue);    
+                }
                 SceneManager.LoadScene("GameOver");
             }
             else

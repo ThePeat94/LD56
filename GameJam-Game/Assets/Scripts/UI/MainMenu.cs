@@ -71,7 +71,7 @@ namespace Nidavellir.UI
 
         public void StartGame()
         {
-            SceneManager.LoadScene("SurfaceLevel");
+            SceneManager.LoadScene("Garnele");
         }
     }
 }

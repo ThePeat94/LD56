@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: e82901f7dfd694d209985db48b8a9905
+  - enabled: 1
+    path: Assets/Scenes/Garnele.unity
+    guid: 466aadcb0c0e976e0871c660a0d410b3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

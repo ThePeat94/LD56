@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3442f715a0624c21a49c1aba64ebfe9f, type: 3}
   m_Name: Food Resource Data
   m_EditorClassIdentifier: 
-  m_startingValue: 20
-  m_maxValue: 100
+  m_startingValue: 0
+  m_maxValue: 10000000

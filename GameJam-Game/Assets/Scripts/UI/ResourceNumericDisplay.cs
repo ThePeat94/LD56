@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices;
 using Nidavellir.EventArgs;
 using Nidavellir.Scriptables;
 using TMPro;
@@ -9,12 +11,16 @@ namespace Nidavellir.UI
     {
         [SerializeField] private Resource m_toDisplay;
         [SerializeField] private TextMeshProUGUI m_textDisplay;
+        [SerializeField] private TextMeshProUGUI m_valueDisplay;
+
+        private float _currentHighScore;
         
 
         private void Awake()
         {
             this.m_toDisplay.ResourceController.ResourceValueChanged += this.OnResourceValueChanged;
             this.m_toDisplay.ResourceController.MaxValueChanged += this.OnMaximumValueChanged;
+            this._currentHighScore = PlayerPrefs.GetFloat("HighScore", 0);
         }
         
         private void OnDestroy()
@@ -30,7 +36,13 @@ namespace Nidavellir.UI
 
         private void UpdateText()
         {
-            this.m_textDisplay.text = $"{this.m_toDisplay.ResourceController.CurrentValue:F2}/{this.m_toDisplay.ResourceController.MaxValue}";
+            this.m_textDisplay.text = $"{this.m_toDisplay.ResourceController.CurrentValue:F2}";
+            var highScore = PlayerPrefs.GetFloat("HighScore", 0);
+            if (this.m_toDisplay.ResourceController.CurrentValue > highScore)
+            {
+                highScore = this.m_toDisplay.ResourceController.CurrentValue;
+            }
+            this.m_valueDisplay.text = $"{highScore:F2}";
         }
 
         private void OnMaximumValueChanged(object sender, ResourceValueChangedEventArgs e)
