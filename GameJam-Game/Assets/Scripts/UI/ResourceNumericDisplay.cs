@@ -30,7 +30,7 @@ namespace Nidavellir.UI
 
         private void UpdateText()
         {
-            this.m_textDisplay.text = $"{this.m_toDisplay.ResourceController.CurrentValue}/{this.m_toDisplay.ResourceController.MaxValue}";
+            this.m_textDisplay.text = $"{this.m_toDisplay.ResourceController.CurrentValue:F2}/{this.m_toDisplay.ResourceController.MaxValue}";
         }
 
         private void OnMaximumValueChanged(object sender, ResourceValueChangedEventArgs e)

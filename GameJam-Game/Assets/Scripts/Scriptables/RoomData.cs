@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Nidavellir.Scriptables
 {
-    [CreateAssetMenu(fileName = "FILENAME", menuName = "MENUNAME", order = 0)]
+    [CreateAssetMenu(fileName = "Room Data", menuName = "Data/Room", order = 0)]
     public class RoomData : ScriptableObject
     {
         [SerializeField] private ResourceData m_initialHealthData;

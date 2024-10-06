@@ -66,6 +66,16 @@ namespace Nidavellir
             this.CurrentValue -= amount;
             this.m_resourceValueChanged?.Invoke(this, new ResourceValueChangedEventArgs(this.CurrentValue));
         }
+        
+        public void ForceUseResource(float amount)
+        {
+            if (amount < 0)
+                throw new ArgumentException($"{amount} is less than 0");
+
+            this.CurrentValue -= amount;
+            this.CurrentValue = Mathf.Max(0, this.CurrentValue);
+            this.m_resourceValueChanged?.Invoke(this, new ResourceValueChangedEventArgs(this.CurrentValue));
+        }
 
         public void ApplyDeltaToMaximumValue(float amount)
         {
