@@ -21,12 +21,12 @@ namespace Nidavellir
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            foreach (var spawner in _appleSpawnPrefabs)
-            {
-                spawner.
-            }
-        }
+        // void Update()
+        // {
+        //     foreach (var spawner in _appleSpawnPrefabs)
+        //     {
+        //         spawner.
+        //     }
+        // }
     }
 }
