@@ -105,7 +105,7 @@ public class CatSpawner : MonoBehaviour
 
     bool IsOutOfBounds(Vector2 position)
     {
-        if (position.x > screenWidth + widthOffset || position.x < -screenWidth - widthOffset)
+        if (position.x > 150 || position.x < -150)
         {
             return true;
         }

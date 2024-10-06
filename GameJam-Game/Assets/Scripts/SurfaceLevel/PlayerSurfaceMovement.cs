@@ -21,7 +21,9 @@ namespace Nidavellir
 
         private float boostTimer = 0f;
         private float cooldownTimer = 0f; 
-        private bool isBoosting = false; 
+        private bool isBoosting = false;
+
+        public float slowMulitplicator = 0.5f;
         
         public TMP_Text boostText;
         
@@ -37,7 +39,7 @@ namespace Nidavellir
 
         private void FixedUpdate()
         {
-            var actualSpeed = speed;
+            var actualSpeed = !GetComponent<GatherFood>().hasCurrentPiece ? speed : speed * slowMulitplicator;
          
             if (m_inputProcessor.IsBoosting && cooldownTimer <= 0f && !isBoosting)
             {

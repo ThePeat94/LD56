@@ -9,7 +9,7 @@ namespace Nidavellir
         private InputProcessor m_inputProcessor;
         private GameObject m_apple;
         public GameObject m_currentPiece;
-        private bool hasCurrentPiece = false;
+        public bool hasCurrentPiece = false;
         [SerializeField] private Resource m_foodResource;
         public GameObject m_applePiece;
         
@@ -27,6 +27,9 @@ namespace Nidavellir
                  m_apple.GetComponentInParent<AppleManager>().TakeBite(); 
                  m_currentPiece.SetActive(true);
                  hasCurrentPiece = true;
+            } else if (m_inputProcessor.InteractTriggered && hasCurrentPiece)
+            {
+                DropCurrentPiece();
             }
         }
 
@@ -39,7 +42,7 @@ namespace Nidavellir
         }
 
         private void OnTriggerEnter2D(Collider2D other)
-        {
+        {      
             if (other.gameObject.CompareTag("burrow") && hasCurrentPiece)
             {
                 hasCurrentPiece = false;
