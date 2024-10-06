@@ -10,7 +10,6 @@ namespace Nidavellir
 
         [SerializeField] private FoodConsumptionData m_foodConsumptionData;
         
-        
         private float m_currentConsumptionFrameCooldown;
         
         private void FixedUpdate()
