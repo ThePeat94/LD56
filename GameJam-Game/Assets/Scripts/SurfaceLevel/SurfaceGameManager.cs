@@ -50,11 +50,11 @@ namespace Nidavellir
         {
             lifeText.enabled = true;
             lifeText.text = "3";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             lifeText.text = "2";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             lifeText.text = "1";
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             lifeText.enabled = false;
             blood.SetActive(false);
             FindFirstObjectByType<CatSpawner>().canSpawn = true;

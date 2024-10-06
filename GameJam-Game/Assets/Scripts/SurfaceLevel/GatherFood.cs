@@ -11,6 +11,7 @@ namespace Nidavellir
         public GameObject m_currentPiece;
         private bool hasCurrentPiece = false;
         [SerializeField] private Resource m_foodResource;
+        public GameObject m_applePiece;
         
 
         private void Start()
@@ -53,6 +54,21 @@ namespace Nidavellir
             {
                 m_apple = null;
             }
+        }
+
+        public void RemoveCurrentPiece()
+        {
+            m_currentPiece.SetActive(false);
+            hasCurrentPiece = false;
+        }
+        
+        public void DropCurrentPiece()
+        {
+            if (hasCurrentPiece == false) return;
+            m_currentPiece.SetActive(false);
+            var applePiece = Instantiate(m_applePiece, m_currentPiece.transform.position, Quaternion.identity);
+            applePiece.AddComponent<AppleManager>().pieces = 1;
+            hasCurrentPiece = false;
         }
     }
 }

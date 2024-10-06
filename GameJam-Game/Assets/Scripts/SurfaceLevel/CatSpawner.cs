@@ -22,6 +22,8 @@ public class CatSpawner : MonoBehaviour
     public bool canSpawn = true;
 
     public Transform player;
+    
+    // public Animator animator;
 
     void Start()
     {
@@ -37,8 +39,8 @@ public class CatSpawner : MonoBehaviour
         {
             if (canSpawn)
             {
-                SpawnCat();
                 yield return new WaitForSeconds(Random.Range(minSpawnPause, maxSpawnPause));
+                SpawnCat();
             }
             yield return null;
         }
@@ -57,8 +59,11 @@ public class CatSpawner : MonoBehaviour
 
     IEnumerator MoveCat(GameObject cat)
     {
-        yield return new WaitForSeconds(Random.Range(minAttackDelay, maxAttackDelay));
-        // TODO: Shadow 
+        var delay = Random.Range(minAttackDelay, maxAttackDelay);
+        // animator.SetFloat("length", delay);
+        // animator.SetTrigger("horizontal");
+        yield return new WaitForSeconds(delay);
+        
     
         while (cat != null)
         {

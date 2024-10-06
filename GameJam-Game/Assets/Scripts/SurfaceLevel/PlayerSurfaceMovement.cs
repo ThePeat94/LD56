@@ -1,4 +1,3 @@
-using System;
 using Nidavellir.Input;
 using TMPro;
 using UnityEngine;
@@ -43,6 +42,7 @@ namespace Nidavellir
             if (m_inputProcessor.IsBoosting && cooldownTimer <= 0f && !isBoosting)
             {
                 isBoosting = true;
+                GetComponent<GatherFood>().DropCurrentPiece();
                 boostTimer = boostDuration;  
                 boostText.text = "Boosting!";
             }
@@ -87,11 +87,12 @@ namespace Nidavellir
         {
             if (other.gameObject.tag == "cat")
             { 
-                Destroy(other.gameObject);
+                Destroy(other.gameObject.transform.root.gameObject);
                 FindFirstObjectByType<CatSpawner>().canSpawn = false;
                 blood.SetActive(true);
                 m_inputProcessor.enabled = false;
                 gameManager.LooseLife();
+                GetComponent<GatherFood>().RemoveCurrentPiece();
             }
         }
     }

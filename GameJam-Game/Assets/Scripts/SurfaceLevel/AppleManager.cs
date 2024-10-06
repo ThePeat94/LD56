@@ -4,7 +4,7 @@ namespace Nidavellir
 {
     public class AppleManager : MonoBehaviour
     {
-        private int pieces;
+        public int pieces;
         private int piecesLeft;
         
         public GameObject[] applePieces;
@@ -24,7 +24,7 @@ namespace Nidavellir
         {
             piecesLeft--;
             
-            if (piecesLeft == 0)
+            if (piecesLeft <= 0 || applePieces == null || applePieces.Length == 0)
             {
                 Destroy(gameObject);
             }
