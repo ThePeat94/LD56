@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Nidavellir.BuildSystem
 {
     public class Grid : MonoBehaviour
     {
-        
-        private List<GridEntity> _gridEntities = new();
         private SpriteRenderer _spriteRenderer;
         private Renderer _renderer;
 
@@ -20,12 +19,21 @@ namespace Nidavellir.BuildSystem
         [SerializeField] private GameObject template;
         [SerializeField] private GameObject parent;
         
+        [SerializeField] private Button bedroomButton;
+        [SerializeField] private GameObject bathroomPrefab;
+        
+        private bool _addingBedroom = false;
+        
         // Start is called before the first frame update
         void Start()
         {
             this.parent = GameObject.Find("Plane");
             this._spriteRenderer = this.template.GetComponent<SpriteRenderer>();
             this._renderer = this.parent.GetComponent<Renderer>();
+            bedroomButton.onClick.AddListener(() =>
+            {
+                this._addingBedroom = !this._addingBedroom;
+            });
             this.CreateGrid();
         }
 
@@ -62,14 +70,17 @@ namespace Nidavellir.BuildSystem
 
         public void OnGridTileClicked(GridEntity entity)
         {
-            if (this._gridEntities.Contains(entity))
+            if (this._addingBedroom)
             {
-                this._gridEntities.Remove(entity);
-                return;
+                var go = Instantiate(bathroomPrefab, entity.transform.position, Quaternion.identity, entity.transform.parent);
+                Vector3 parentSize = entity.GetComponent<Renderer>().bounds.size;
+                Vector3 childSize = go.GetComponentInChildren<Renderer>().bounds.size;
+                var scale = new Vector3(parentSize.x / childSize.x, parentSize.y / childSize.y, 1);
+                
+                go.transform.localScale = scale;
+                Destroy(entity.gameObject);
+                this._addingBedroom = false;
             }
-            this._gridEntities.Add(entity);
-            var s = entity.GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log("OnGridTileClicked " + s.text);
         }
         
     }
