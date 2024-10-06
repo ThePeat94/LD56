@@ -37,6 +37,7 @@ namespace Nidavellir
                 throw new ArgumentException($"{value} is less than 0");
 
             this.CurrentValue += value;
+            this.CurrentValue = Mathf.Min(this.CurrentValue, this.MaxValue);
             this.m_resourceValueChanged?.Invoke(this, new ResourceValueChangedEventArgs(this.CurrentValue));
         }
 

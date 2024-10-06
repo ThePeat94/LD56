@@ -27,6 +27,18 @@ namespace Nidavellir.Input
             add => this.m_playerInput.Elevator.GoDown.performed += value;
             remove => this.m_playerInput.Elevator.GoDown.performed -= value;
         }
+        
+        public event Action<InputAction.CallbackContext> InteractionTriggered
+        {
+            add => this.m_playerInput.Actions.Interact.performed += value;
+            remove => this.m_playerInput.Actions.Interact.performed -= value;
+        }
+        
+        public event Action<InputAction.CallbackContext> ShootingTriggered
+        {
+            add => this.m_playerInput.Actions.Shoot.performed += value;
+            remove => this.m_playerInput.Actions.Shoot.performed -= value;
+        }
 
         public event EventHandler OnPlacePerformed;
 

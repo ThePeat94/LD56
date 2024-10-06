@@ -1,6 +1,3 @@
-using System;
-using Nidavellir.Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using InputProcessor = Nidavellir.Input.InputProcessor;
