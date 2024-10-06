@@ -18,6 +18,8 @@ namespace Nidavellir.Input
 
         public event EventHandler InteractEvent;
         
+        public bool ClickInProgress => this.m_playerInput.Actions.Click.inProgress;
+        
         public event Action<InputAction.CallbackContext> ElevatorUpTriggered
         {
             add => this.m_playerInput.Elevator.GoUp.performed += value;
@@ -43,6 +45,8 @@ namespace Nidavellir.Input
         }
 
         public event EventHandler OnPlacePerformed;
+        
+        public event EventHandler OnClickCancelled;
 
         public bool IsBoosting { get; private set; }
 
@@ -53,6 +57,13 @@ namespace Nidavellir.Input
             this.m_playerInput.Actions.Boost.canceled += this.OnBoostEnded;
             this.m_playerInput.Actions.Place.started += this.HandlePlacePerformed;
             this.m_playerInput.Actions.Interact.performed += this.HandleInteract;
+            
+            this.m_playerInput.Actions.Click.canceled += ClickOnCancelled; 
+        }
+
+        private void ClickOnCancelled(InputAction.CallbackContext obj)
+        {
+            this.OnClickCancelled?.Invoke(this, System.EventArgs.Empty);
         }
 
         private void Update()
@@ -94,11 +105,6 @@ namespace Nidavellir.Input
         private void HandlePlacePerformed(InputAction.CallbackContext ctx)
         {
             this.OnPlacePerformed?.Invoke(this, new ClickInputEventArgs(ctx));
-        }
-
-        private void HandleInteract(InputAction.CallbackContext callbackContext)
-        { 
-            this.InteractEvent?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }

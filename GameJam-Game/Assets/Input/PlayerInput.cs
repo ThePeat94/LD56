@@ -98,6 +98,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""4de247b0-c255-4eb7-b741-e8bdc70865ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -364,6 +373,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Place"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90c26c45-183d-4ba1-9ae8-d3985c990715"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -476,6 +496,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions_Boost = m_Actions.FindAction("Boost", throwIfNotFound: true);
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
         m_Actions_Place = m_Actions.FindAction("Place", throwIfNotFound: true);
+        m_Actions_Click = m_Actions.FindAction("Click", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
@@ -553,6 +574,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_Boost;
     private readonly InputAction m_Actions_Retry;
     private readonly InputAction m_Actions_Place;
+    private readonly InputAction m_Actions_Click;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -565,6 +587,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Boost => m_Wrapper.m_Actions_Boost;
         public InputAction @Retry => m_Wrapper.m_Actions_Retry;
         public InputAction @Place => m_Wrapper.m_Actions_Place;
+        public InputAction @Click => m_Wrapper.m_Actions_Click;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -598,6 +621,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Place.started += instance.OnPlace;
             @Place.performed += instance.OnPlace;
             @Place.canceled += instance.OnPlace;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -626,6 +652,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Place.started -= instance.OnPlace;
             @Place.performed -= instance.OnPlace;
             @Place.canceled -= instance.OnPlace;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -761,6 +790,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnBoost(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
         void OnPlace(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
