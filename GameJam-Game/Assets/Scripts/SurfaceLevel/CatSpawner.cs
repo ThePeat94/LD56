@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CatSpawner : MonoBehaviour
 {
+    [SerializeField]
     public GameObject catPrefab;
 
     public float minSpawnPause = 5f;
