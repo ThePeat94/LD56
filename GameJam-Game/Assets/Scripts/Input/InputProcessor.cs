@@ -15,8 +15,6 @@ namespace Nidavellir.Input
         public bool QuitTriggered => this.m_playerInput.Actions.Quit.triggered;
         public bool BackToMainTriggered => this.m_playerInput.Actions.BackToMenu.triggered;
         public bool RetryTriggered => this.m_playerInput.Actions.Retry.triggered;
-
-        public event EventHandler InteractEvent;
         
         public bool ClickInProgress => this.m_playerInput.Actions.Click.inProgress;
         
@@ -56,7 +54,6 @@ namespace Nidavellir.Input
             this.m_playerInput.Actions.Boost.started += this.OnBoostStarted;
             this.m_playerInput.Actions.Boost.canceled += this.OnBoostEnded;
             this.m_playerInput.Actions.Place.started += this.HandlePlacePerformed;
-            this.m_playerInput.Actions.Interact.performed += this.HandleInteract;
             
             this.m_playerInput.Actions.Click.canceled += ClickOnCancelled; 
         }
