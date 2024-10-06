@@ -71,7 +71,7 @@ namespace Nidavellir.UI
 
         public void StartGame()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("SurfaceLevel");
         }
     }
 }

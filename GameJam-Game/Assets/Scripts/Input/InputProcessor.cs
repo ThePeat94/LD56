@@ -15,6 +15,8 @@ namespace Nidavellir.Input
         public bool QuitTriggered => this.m_playerInput.Actions.Quit.triggered;
         public bool BackToMainTriggered => this.m_playerInput.Actions.BackToMenu.triggered;
         public bool RetryTriggered => this.m_playerInput.Actions.Retry.triggered;
+
+        public event EventHandler InteractEvent;
         
         public event Action<InputAction.CallbackContext> ElevatorUpTriggered
         {
@@ -50,6 +52,7 @@ namespace Nidavellir.Input
             this.m_playerInput.Actions.Boost.started += this.OnBoostStarted;
             this.m_playerInput.Actions.Boost.canceled += this.OnBoostEnded;
             this.m_playerInput.Actions.Place.started += this.HandlePlacePerformed;
+            this.m_playerInput.Actions.Interact.performed += this.HandleInteract;
         }
 
         private void Update()
@@ -91,6 +94,11 @@ namespace Nidavellir.Input
         private void HandlePlacePerformed(InputAction.CallbackContext ctx)
         {
             this.OnPlacePerformed?.Invoke(this, new ClickInputEventArgs(ctx));
+        }
+
+        private void HandleInteract(InputAction.CallbackContext callbackContext)
+        { 
+            this.InteractEvent?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }
