@@ -6,32 +6,44 @@ namespace Nidavellir
     {
         public int pieces;
         private int piecesLeft;
-        
+
         public GameObject[] applePieces;
-        
+
         private void Start()
         {
-            pieces = applePieces.Length;
-            piecesLeft = pieces;
-            foreach (GameObject applePiece in applePieces)
+            if (applePieces != null && applePieces.Length > 0) // Use '&&' to avoid null reference exceptions
             {
-                applePiece.SetActive(false);
-            }
-            applePieces[pieces - piecesLeft].SetActive(true);
-        }
+                pieces = applePieces.Length;
+                piecesLeft = pieces; // Initialize piecesLeft
 
-        public  void TakeBite()
-        {
-            piecesLeft--;
-            
-            if (piecesLeft <= 0 || applePieces == null || applePieces.Length == 0)
-            {
-                Destroy(gameObject);
+                foreach (GameObject applePiece in applePieces)
+                {
+                    applePiece.SetActive(false); // Disable all pieces at the start
+                }
+
+                applePieces[pieces - piecesLeft].SetActive(true); // Activate the first piece
             }
             else
             {
-                applePieces[pieces - piecesLeft].SetActive(true); 
-                applePieces[pieces - piecesLeft-1].SetActive(false); 
+                pieces = 1;
+                piecesLeft = pieces; // Initialize piecesLeft
+            }
+        }
+
+        public void TakeBite()
+        {
+            piecesLeft--;
+            
+            Debug.Log(piecesLeft);
+
+            if (piecesLeft <= 0 || applePieces == null || applePieces.Length == 0)
+            {
+                Destroy(gameObject); // Destroy the apple when no pieces are left
+            }
+            else
+            {
+                applePieces[pieces - piecesLeft].SetActive(true); // Activate the current piece
+                applePieces[pieces - piecesLeft - 1].SetActive(false); // Deactivate the previous piece
             }
         }
     }

@@ -22,8 +22,8 @@ public class CatSpawner : MonoBehaviour
     public bool canSpawn = true;
 
     public Transform player;
-    
-    // public Animator animator;
+
+    public GameObject catShadow;
 
     void Start()
     {
@@ -42,6 +42,7 @@ public class CatSpawner : MonoBehaviour
                 yield return new WaitForSeconds(Random.Range(minSpawnPause, maxSpawnPause));
                 SpawnCat();
             }
+
             yield return null;
         }
     }
@@ -52,7 +53,8 @@ public class CatSpawner : MonoBehaviour
         bool spawnOnLeft = Random.Range(0f, 2f) >= 1f;
         spawnPosition.y = Random.Range(-(screenHeight - heightOffset), screenHeight - heightOffset);
         spawnPosition.x = spawnOnLeft ? -(screenWidth + widthOffset) : screenWidth + widthOffset;
-        GameObject newCat = Instantiate(catPrefab, spawnPosition + new Vector2(player.position.x, player.position.y), Quaternion.identity);
+        GameObject newCat = Instantiate(catPrefab, spawnPosition + new Vector2(player.position.x, player.position.y),
+            Quaternion.identity);
         newCat.transform.rotation = Quaternion.Euler(0, 0, spawnOnLeft ? 90 : -90);
         StartCoroutine(MoveCat(newCat));
     }
@@ -60,33 +62,54 @@ public class CatSpawner : MonoBehaviour
     IEnumerator MoveCat(GameObject cat)
     {
         var delay = Random.Range(minAttackDelay, maxAttackDelay);
-        // animator.SetFloat("length", delay);
-        // animator.SetTrigger("horizontal");
-        yield return new WaitForSeconds(delay);
-        
-    
+        GameObject newCatShadow = Instantiate(catShadow,
+            cat.transform.position, Quaternion.identity);
+        newCatShadow.transform.rotation = cat.transform.rotation;
+
+        Vector2 screenMiddle = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
+
+        float distanceToMiddle = Mathf.Abs(newCatShadow.transform.position.x - screenMiddle.x);
+        float shadowSpeed = distanceToMiddle / delay;
+        float elapsedTime = 0f;
+        while (elapsedTime < delay)
+        {
+            float step = shadowSpeed * Time.deltaTime;
+            newCatShadow.transform.Translate(Vector2.down * step);
+
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / delay);
+            var spriteRenderer = newCatShadow.GetComponentInChildren<SpriteRenderer>();
+            Color color = spriteRenderer.color;
+            color.a = alpha;
+            spriteRenderer.color = color;
+
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        Destroy(newCatShadow);
         while (cat != null)
         {
             cat.transform.Translate(Vector2.down * (moveSpeed * Time.deltaTime));
-    
+
             if (IsOutOfBounds(cat.transform.position))
             {
                 Destroy(cat);
+                Destroy(newCatShadow);
             }
-    
+
             yield return new WaitForEndOfFrame();
         }
-        
-        canSpawn = true;  
+
+        canSpawn = true;
     }
-    
+
     bool IsOutOfBounds(Vector2 position)
     {
         if (position.x > screenWidth + widthOffset || position.x < -screenWidth - widthOffset)
         {
             return true;
         }
-    
+
         return false;
     }
 }

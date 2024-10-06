@@ -4419,13 +4419,14 @@ MonoBehaviour:
   catPrefab: {fileID: 9154032067902465925, guid: fa09e25b283de45ef96b35f8b4af8e26, type: 3}
   minSpawnPause: 5
   maxSpawnPause: 2
-  minAttackDelay: 3
-  maxAttackDelay: 5
+  minAttackDelay: 1
+  maxAttackDelay: 2
   moveSpeed: 50
   widthOffset: 20
   heightOffset: 15
   canSpawn: 1
   player: {fileID: 1035559119}
+  catShadow: {fileID: 9154032067902465925, guid: f27f7933ee69c4dc083c53261a6aba99, type: 3}
 --- !u!4 &2100505920
 Transform:
   m_ObjectHideFlags: 0
