@@ -10,7 +10,7 @@ public class CatSpawner : MonoBehaviour
     public float maxSpawnPause = 20f;
     public float timeFactor = 0.00001f;
     public float timeFactorSpeed = 0.00005f;
-    private float currentTimefactor = 0; 
+    private float currentTimefactor = 1; 
 
     public float minAttackDelay = 0.5f;
     public float maxAttackDelay = 2.0f;
@@ -46,7 +46,7 @@ public class CatSpawner : MonoBehaviour
     {
         while (true)
         {
-            currentTimefactor *= timeFactor; 
+            currentTimefactor -= timeFactor; 
             Debug.Log(currentTimefactor);
             if (canSpawn)
             {

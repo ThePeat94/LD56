@@ -73,7 +73,7 @@ namespace Nidavellir
 
             yield return new WaitForSeconds(3);
 
-            _hintText.text = "Beware from the cat!";
+            _hintText.text = "Beware of the cat!";
             yield return new WaitForSeconds(3);
             
             catSpawner.gameObject.SetActive(true); 
