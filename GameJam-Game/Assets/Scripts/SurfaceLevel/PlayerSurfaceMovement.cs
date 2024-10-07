@@ -14,8 +14,6 @@ namespace Nidavellir
         private Rigidbody2D m_rb;
         private InputProcessor m_inputProcessor;
 
-        public GameObject blood;
-
         public float boostDuration = 1f;
         public float boostCooldown = 5f;
 
@@ -34,15 +32,16 @@ namespace Nidavellir
         public AudioClip boost;
         public AudioClip boostFail;
 
+        public GameObject sprite;
+
         void Start()
         {
             m_rb = GetComponent<Rigidbody2D>();
             audioSource = GetComponent<AudioSource>();
-            m_inputProcessor = GetComponent<InputProcessor>();
-            blood.SetActive(false);
+            m_inputProcessor = GetComponent<InputProcessor>(); 
             boostText.text = "Boost available";
         }
-
+ 
         private void FixedUpdate()
         {
             var actualSpeed = speed;
@@ -122,7 +121,7 @@ namespace Nidavellir
             {
                 Destroy(other.gameObject.transform.root.gameObject);
                 FindFirstObjectByType<CatSpawner>().canSpawn = false;
-                blood.SetActive(true);
+                sprite.SetActive(false);
                 m_inputProcessor.enabled = false;
                 gameManager.LooseLife();
                 audioSource.clip = lifeLost;

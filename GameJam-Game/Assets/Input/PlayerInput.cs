@@ -107,6 +107,42 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BoostUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""637440ac-64a3-4f9c-a3d8-42730f9ef88b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BoostLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbb7a98c-7012-400c-9653-95885c4b964e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BoostRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""549d2fde-e216-4840-b069-5020bef8216b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BoostDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""656b884e-ee32-4403-9244-d6884d000a2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -158,6 +194,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""right"",
                     ""id"": ""c7e000f5-c8df-4eea-b9a8-d92364b9312a"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keys"",
+                    ""id"": ""74c4568a-13b6-4a68-9790-2cd74a483d83"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c7df7d6e-11e2-4c06-ab89-e6ecdcf42ae6"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b92dfb7d-f82e-43dc-b512-f860714065e9"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""606750c0-4c62-48f6-9ebd-5908538aca77"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""cc9f077a-1a39-4c57-89e4-31f29c322c54"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -384,6 +475,94 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e37ef510-d0b7-4002-856c-a4e8dea324de"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0412bca7-85e8-4aca-a258-7e80c72330cf"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e7e0d33-7178-4cf2-86d0-4e822c392b5f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfd6dd43-01a7-4e42-9908-9f331c952bee"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e10865aa-f917-4076-89ec-7881c01e1d43"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25f9778e-8705-41cd-a834-a6c02d622efc"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ea69625-aa2c-43a8-b241-333c7953b7fe"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21ff7889-27a5-436e-bd90-53826c4714c4"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoostDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -497,6 +676,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Actions_Retry = m_Actions.FindAction("Retry", throwIfNotFound: true);
         m_Actions_Place = m_Actions.FindAction("Place", throwIfNotFound: true);
         m_Actions_Click = m_Actions.FindAction("Click", throwIfNotFound: true);
+        m_Actions_BoostUp = m_Actions.FindAction("BoostUp", throwIfNotFound: true);
+        m_Actions_BoostLeft = m_Actions.FindAction("BoostLeft", throwIfNotFound: true);
+        m_Actions_BoostRight = m_Actions.FindAction("BoostRight", throwIfNotFound: true);
+        m_Actions_BoostDown = m_Actions.FindAction("BoostDown", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_SimulateAddFoodStorage = m_Debug.FindAction("SimulateAddFoodStorage", throwIfNotFound: true);
@@ -575,6 +758,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_Retry;
     private readonly InputAction m_Actions_Place;
     private readonly InputAction m_Actions_Click;
+    private readonly InputAction m_Actions_BoostUp;
+    private readonly InputAction m_Actions_BoostLeft;
+    private readonly InputAction m_Actions_BoostRight;
+    private readonly InputAction m_Actions_BoostDown;
     public struct ActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -588,6 +775,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Retry => m_Wrapper.m_Actions_Retry;
         public InputAction @Place => m_Wrapper.m_Actions_Place;
         public InputAction @Click => m_Wrapper.m_Actions_Click;
+        public InputAction @BoostUp => m_Wrapper.m_Actions_BoostUp;
+        public InputAction @BoostLeft => m_Wrapper.m_Actions_BoostLeft;
+        public InputAction @BoostRight => m_Wrapper.m_Actions_BoostRight;
+        public InputAction @BoostDown => m_Wrapper.m_Actions_BoostDown;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -624,6 +815,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
+            @BoostUp.started += instance.OnBoostUp;
+            @BoostUp.performed += instance.OnBoostUp;
+            @BoostUp.canceled += instance.OnBoostUp;
+            @BoostLeft.started += instance.OnBoostLeft;
+            @BoostLeft.performed += instance.OnBoostLeft;
+            @BoostLeft.canceled += instance.OnBoostLeft;
+            @BoostRight.started += instance.OnBoostRight;
+            @BoostRight.performed += instance.OnBoostRight;
+            @BoostRight.canceled += instance.OnBoostRight;
+            @BoostDown.started += instance.OnBoostDown;
+            @BoostDown.performed += instance.OnBoostDown;
+            @BoostDown.canceled += instance.OnBoostDown;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -655,6 +858,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
+            @BoostUp.started -= instance.OnBoostUp;
+            @BoostUp.performed -= instance.OnBoostUp;
+            @BoostUp.canceled -= instance.OnBoostUp;
+            @BoostLeft.started -= instance.OnBoostLeft;
+            @BoostLeft.performed -= instance.OnBoostLeft;
+            @BoostLeft.canceled -= instance.OnBoostLeft;
+            @BoostRight.started -= instance.OnBoostRight;
+            @BoostRight.performed -= instance.OnBoostRight;
+            @BoostRight.canceled -= instance.OnBoostRight;
+            @BoostDown.started -= instance.OnBoostDown;
+            @BoostDown.performed -= instance.OnBoostDown;
+            @BoostDown.canceled -= instance.OnBoostDown;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -791,6 +1006,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnRetry(InputAction.CallbackContext context);
         void OnPlace(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+        void OnBoostUp(InputAction.CallbackContext context);
+        void OnBoostLeft(InputAction.CallbackContext context);
+        void OnBoostRight(InputAction.CallbackContext context);
+        void OnBoostDown(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

@@ -15,27 +15,35 @@ namespace Nidavellir.Input
         public bool QuitTriggered => this.m_playerInput.Actions.Quit.triggered;
         public bool BackToMainTriggered => this.m_playerInput.Actions.BackToMenu.triggered;
         public bool RetryTriggered => this.m_playerInput.Actions.Retry.triggered;
-        
+
+        //
+        public bool BoostUpTriggered => this.m_playerInput.Actions.BoostUp.triggered;
+        public bool BoostDownTriggered => this.m_playerInput.Actions.BoostDown.triggered;
+        public bool BoostLeftTriggered => this.m_playerInput.Actions.BoostLeft.triggered;
+        public bool BoostRightTriggered => this.m_playerInput.Actions.BoostRight.triggered;
+        //
+
+
         public bool ClickInProgress => this.m_playerInput.Actions.Click.inProgress;
-        
+
         public event Action<InputAction.CallbackContext> ElevatorUpTriggered
         {
             add => this.m_playerInput.Elevator.GoUp.performed += value;
             remove => this.m_playerInput.Elevator.GoUp.performed -= value;
         }
-        
+
         public event Action<InputAction.CallbackContext> ElevatorDownTriggered
         {
             add => this.m_playerInput.Elevator.GoDown.performed += value;
             remove => this.m_playerInput.Elevator.GoDown.performed -= value;
         }
-        
+
         public event Action<InputAction.CallbackContext> InteractionTriggered
         {
             add => this.m_playerInput.Actions.Interact.performed += value;
             remove => this.m_playerInput.Actions.Interact.performed -= value;
         }
-        
+
         public event Action<InputAction.CallbackContext> ShootingTriggered
         {
             add => this.m_playerInput.Actions.Shoot.performed += value;
@@ -43,7 +51,7 @@ namespace Nidavellir.Input
         }
 
         public event EventHandler OnPlacePerformed;
-        
+
         public event EventHandler OnClickCancelled;
 
         public bool IsBoosting { get; private set; }
@@ -54,8 +62,8 @@ namespace Nidavellir.Input
             this.m_playerInput.Actions.Boost.started += this.OnBoostStarted;
             this.m_playerInput.Actions.Boost.canceled += this.OnBoostEnded;
             this.m_playerInput.Actions.Place.started += this.HandlePlacePerformed;
-            
-            this.m_playerInput.Actions.Click.canceled += ClickOnCancelled; 
+
+            this.m_playerInput.Actions.Click.canceled += ClickOnCancelled;
         }
 
         private void ClickOnCancelled(InputAction.CallbackContext obj)
@@ -72,12 +80,12 @@ namespace Nidavellir.Input
         {
             this.m_playerInput?.Enable();
         }
-        
+
         public void EnableElevatorControls()
         {
             this.m_playerInput?.Elevator.Enable();
         }
-        
+
         public void DisableElevatorControls()
         {
             this.m_playerInput?.Elevator.Disable();

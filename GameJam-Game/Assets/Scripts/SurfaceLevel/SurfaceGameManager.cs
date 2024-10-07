@@ -12,8 +12,7 @@ namespace Nidavellir
     {
         public GameObject[] lifeUI = new GameObject[3];
         public int maxLifeCount = 3;
-        public int currentLife;
-        public GameObject blood;
+        public int currentLife; 
         public TMP_Text lifeText;
         [SerializeField] private Resource resource;
 
@@ -22,6 +21,11 @@ namespace Nidavellir
         
         public AudioSource m_audioSource;
         public AudioClip m_gameOverClip;
+
+        public GameObject playerSprite;
+
+        public GameObject player;
+        public GameObject burrow;
 
         void Start()
         {
@@ -67,7 +71,8 @@ namespace Nidavellir
         private IEnumerator Restart()
         { 
             yield return new WaitForSeconds(0.5f); 
-            blood.SetActive(false);
+            playerSprite.SetActive(true);
+            player.transform.position = burrow.transform.position;
             FindFirstObjectByType<CatSpawner>().canSpawn = true;
             canLoseLife = true;
             m_playerInputProcessor.enabled = true;
