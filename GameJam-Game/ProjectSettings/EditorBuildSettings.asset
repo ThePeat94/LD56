@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Garnele.unity
     guid: 466aadcb0c0e976e0871c660a0d410b3
+  - enabled: 1
+    path: Assets/Scenes/mainGameScene.unity
+    guid: 0340247631e824fef9f83c558760471e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

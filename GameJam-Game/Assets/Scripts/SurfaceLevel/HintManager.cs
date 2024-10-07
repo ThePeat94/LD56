@@ -39,21 +39,6 @@ namespace Nidavellir
 
             yield return new WaitForSeconds(1);
 
-            _hintText.text = "Use [Shift] to dash.";
-            next = false;
-            yield return new WaitForSeconds(1);
-            while (!next)
-            {
-                if (m_inputProcessor.IsBoosting)
-                {
-                    next = true;
-                }
-
-                yield return new WaitForEndOfFrame();
-            }
-
-            yield return new WaitForSeconds(1);
-
             _hintText.text = "Find an Apple and use [E] to bite of a piece.";
             next = false;
             yield return new WaitForSeconds(1);
@@ -90,9 +75,26 @@ namespace Nidavellir
 
             _hintText.text = "Beware from the cat!";
             yield return new WaitForSeconds(3);
-            catSpawner.gameObject.SetActive(true);
-            yield return new WaitForSeconds(1);
+            
+            catSpawner.gameObject.SetActive(true); 
+            
+            yield return new WaitForSeconds(3);
 
+            _hintText.text = "Use [Shift] to dash.";
+            next = false;
+            yield return new WaitForSeconds(1);
+            while (!next)
+            {
+                if (m_inputProcessor.IsBoosting)
+                {
+                    next = true;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+            
+            yield return new WaitForSeconds(1);
+              
             _hintText.text = "";
             next = false;
             yield return new WaitForSeconds(1);
@@ -120,6 +122,7 @@ namespace Nidavellir
 
             yield return new WaitForSeconds(1);
             _hintText.text = "";
+          
         }
     }
 }

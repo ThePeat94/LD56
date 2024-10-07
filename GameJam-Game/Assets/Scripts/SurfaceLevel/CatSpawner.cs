@@ -6,9 +6,11 @@ public class CatSpawner : MonoBehaviour
     [SerializeField]
     public GameObject catPrefab;
 
-    public float minSpawnPause = 5f;
-    public float maxSpawnPause = 10f;
-    private float timeFactor = 1;
+    public float minSpawnPause = 10f;
+    public float maxSpawnPause = 20f;
+    public float timeFactor = 0.00001f;
+    public float timeFactorSpeed = 0.00005f;
+    private float currentTimefactor = 0; 
 
     public float minAttackDelay = 0.5f;
     public float maxAttackDelay = 2.0f;
@@ -44,11 +46,11 @@ public class CatSpawner : MonoBehaviour
     {
         while (true)
         {
-            timeFactor -= Time.deltaTime;
-            Debug.Log(timeFactor);
+            currentTimefactor *= timeFactor; 
+            Debug.Log(currentTimefactor);
             if (canSpawn)
             {
-                var spawnPause = Random.Range(minSpawnPause, maxSpawnPause) * timeFactor;
+                var spawnPause = Random.Range(minSpawnPause, maxSpawnPause) * currentTimefactor;
                 yield return new WaitForSeconds(spawnPause);
                 SpawnCat();
             }
@@ -101,6 +103,7 @@ public class CatSpawner : MonoBehaviour
         Destroy(newCatShadow);
         audioSource.clip = attackClip;
         audioSource.Play();
+        moveSpeed += timeFactorSpeed;
         while (cat != null)
         {
             cat.transform.Translate(Vector2.down * (moveSpeed * Time.deltaTime));
