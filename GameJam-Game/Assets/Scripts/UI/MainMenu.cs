@@ -86,7 +86,7 @@ namespace Nidavellir.UI
 
         private IEnumerator StartGameDelayed()
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(15);
             SceneManager.LoadScene("mainGameScene");
         }
     }
