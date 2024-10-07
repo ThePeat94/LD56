@@ -12667,9 +12667,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeUI:
-  - {fileID: 597812076}
-  - {fileID: 419960305}
   - {fileID: 1308491672}
+  - {fileID: 419960305}
+  - {fileID: 597812076}
   maxLifeCount: 3
   currentLife: 3
   resource: {fileID: 11400000, guid: 5fa24cb9a48c74c22b35c47043e650dd, type: 2}

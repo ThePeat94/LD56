@@ -52,7 +52,7 @@ namespace Nidavellir
             }
             else
             {
-                lifeUI[currentLife - 1].GetComponent<Image>().color = Color.black;
+                lifeUI[currentLife].GetComponent<Image>().color = Color.black;
                 StartCoroutine(Restart());
             }
         }
