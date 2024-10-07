@@ -42,11 +42,11 @@ namespace Nidavellir
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("collectable"))
+            if (other.gameObject.CompareTag("collectable") && !hasCurrentPiece)
             {
                 m_apple = other.gameObject;
             }
-        }
+        } 
 
         public bool delivered = false;
         
@@ -60,6 +60,10 @@ namespace Nidavellir
                 m_audioSource.clip = m_appleDeliveredSound;
                 m_audioSource.Play();
                 delivered = true;
+            }
+            if (other.gameObject.CompareTag("collectable") && !hasCurrentPiece)
+            {
+                m_apple = other.gameObject;
             }
         }
 
