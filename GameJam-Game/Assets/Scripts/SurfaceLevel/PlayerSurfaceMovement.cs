@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using Nidavellir.Input;
 using TMPro;
 using UnityEngine;
