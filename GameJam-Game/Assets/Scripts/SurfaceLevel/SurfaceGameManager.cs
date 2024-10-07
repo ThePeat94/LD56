@@ -1,7 +1,6 @@
 using System.Collections;
 using Nidavellir.Input;
 using Nidavellir.Scriptables;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,8 +11,7 @@ namespace Nidavellir
     {
         public GameObject[] lifeUI = new GameObject[3];
         public int maxLifeCount = 3;
-        public int currentLife; 
-        public TMP_Text lifeText;
+        public int currentLife;  
         [SerializeField] private Resource resource;
 
         private bool canLoseLife = true;
@@ -34,8 +32,6 @@ namespace Nidavellir
             {
                 points.GetComponent<Image>().enabled = true;
             }
-
-            lifeText.enabled = false;
         }
 
         public void LooseLife()

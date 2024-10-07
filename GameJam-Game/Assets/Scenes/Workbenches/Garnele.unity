@@ -789,6 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_toDisplay: {fileID: 11400000, guid: 5906150067d0d4c0a83af2a09c5deb5d, type: 2}
   m_textDisplay: {fileID: 744893816}
+  m_valueDisplay: {fileID: 0}
 --- !u!114 &613560248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,6 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_toDisplay: {fileID: 11400000, guid: 5fa24cb9a48c74c22b35c47043e650dd, type: 2}
   m_textDisplay: {fileID: 363364753}
+  m_valueDisplay: {fileID: 0}
 --- !u!1 &744893814
 GameObject:
   m_ObjectHideFlags: 0

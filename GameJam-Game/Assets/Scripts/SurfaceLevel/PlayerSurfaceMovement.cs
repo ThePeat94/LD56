@@ -1,6 +1,8 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using Nidavellir.Input;
 using TMPro;
 using UnityEngine;
+using Image = UnityEngine.UI.Image;
 
 namespace Nidavellir
 {
@@ -22,6 +24,7 @@ namespace Nidavellir
         private bool isBoosting = false;
 
         public TMP_Text boostText;
+        public Image boostImage;
 
         public SurfaceGameManager gameManager;
 
@@ -39,7 +42,8 @@ namespace Nidavellir
             m_rb = GetComponent<Rigidbody2D>();
             audioSource = GetComponent<AudioSource>();
             m_inputProcessor = GetComponent<InputProcessor>(); 
-            boostText.text = "Boost available";
+            boostImage.color = Color.white;
+            boostText.text = "";
         }
  
         private void FixedUpdate()
@@ -52,8 +56,7 @@ namespace Nidavellir
                 GetComponent<GatherFood>().DropCurrentPiece();
                 boostTimer = boostDuration;
                 audioSource.clip = boost;
-                audioSource.Play();
-                boostText.text = "Boosting!";
+                audioSource.Play();   
             }
 
             if (isBoosting)
@@ -100,18 +103,24 @@ namespace Nidavellir
             {
                 if (m_inputProcessor.IsBoosting)
                 {
-                    boostText.color = Color.red;
-                    boostText.fontStyle = FontStyles.Bold; 
+                    boostImage.color = Color.black;
+                    boostText.color = Color.red; 
                     audioSource.PlayOneShot(boostFail, 0.1f); 
                 }
                 else
                 {
+                    boostImage.color = Color.black;
                     boostText.color = Color.white;
                     boostText.fontStyle = FontStyles.Normal;
                 }
 
-                boostText.text = "Next Boost in " + Mathf.Floor(cooldownTimer) + " seconds";
+                boostText.text = cooldownTimer.ToString("0");
                 cooldownTimer -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                boostImage.color = Color.white;
+                boostText.text = "";
             }
         }
 
