@@ -5339,7 +5339,6 @@ GameObject:
   m_Component:
   - component: {fileID: 919879336}
   - component: {fileID: 919879335}
-  - component: {fileID: 919879334}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -5347,20 +5346,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &919879334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919879333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed445faf69cf7c642bd4933e1e3d4ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_titleTheme: {fileID: 11400000, guid: 615c9e4b6f6599448996c3cbaf3502aa, type: 2}
-  m_gameTheme: {fileID: 0}
 --- !u!82 &919879335
 AudioSource:
   m_ObjectHideFlags: 0
