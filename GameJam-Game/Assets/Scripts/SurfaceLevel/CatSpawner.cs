@@ -71,6 +71,7 @@ public class CatSpawner : MonoBehaviour
 
     IEnumerator MoveCat(GameObject cat, bool spawnOnLeft)
     {
+        var dir = spawnOnLeft ? Vector2.right : Vector2.left;
         audioSource.clip = shadowClip;
         audioSource.Play();
         var delay = Random.Range(minAttackDelay, maxAttackDelay);
@@ -86,7 +87,7 @@ public class CatSpawner : MonoBehaviour
         while (elapsedTime < delay)
         {
             float step = shadowSpeed * Time.deltaTime;
-            newCatShadow.transform.Translate(spawnOnLeft ? Vector3.right : Vector3.left * step);
+            newCatShadow.transform.Translate(dir * step);
 
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / delay);
             var spriteRenderer = newCatShadow.GetComponentInChildren<SpriteRenderer>();
@@ -104,7 +105,7 @@ public class CatSpawner : MonoBehaviour
         moveSpeed += timeFactorSpeed;
         while (cat != null)
         {
-            cat.transform.Translate(Vector2.down * (moveSpeed * Time.deltaTime));
+            cat.transform.Translate(dir * (moveSpeed * Time.deltaTime));
 
             if (IsOutOfBounds(cat.transform.position))
             {
