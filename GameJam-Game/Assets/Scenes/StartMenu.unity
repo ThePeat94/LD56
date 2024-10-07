@@ -246,6 +246,43 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2835570732011599744, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_text
+      value: It is freezingly cold, my feet are numb, I think my tail fell off. I
+        need to get food or Debrah will leave me and take the kids!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535412424147031631, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 82
+      objectReference: {fileID: 0}
     - target: {fileID: 3630209698118626246, guid: 2702a44da2be74443a8b17bda6b4cce8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
