@@ -48,6 +48,8 @@ namespace Nidavellir
             }
         }
 
+        public bool delivered = false;
+        
         private void OnTriggerEnter2D(Collider2D other)
         {      
             if (other.gameObject.CompareTag("burrow") && hasCurrentPiece)
@@ -57,6 +59,7 @@ namespace Nidavellir
                 this.m_foodResource.ResourceController.Add(1);
                 m_audioSource.clip = m_appleDeliveredSound;
                 m_audioSource.Play();
+                delivered = true;
             }
         }
 
