@@ -80,6 +80,9 @@ namespace Nidavellir
             } else if (m_inputProcessor.Movement == Vector2.right)
             {
                 spriteAnimator.SetInteger("direction", 2);
+            } else if (m_inputProcessor.Movement == Vector2.zero)
+            {
+                spriteAnimator.SetInteger("direction", 5);
             }
 
             if (m_inputProcessor.IsBoosting && boostTimer <= 0f)
