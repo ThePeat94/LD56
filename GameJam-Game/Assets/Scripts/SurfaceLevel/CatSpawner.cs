@@ -64,7 +64,7 @@ public class CatSpawner : MonoBehaviour
         spawnPosition.y = Random.Range(-(screenHeight - heightOffset), screenHeight - heightOffset);
         spawnPosition.x = spawnOnLeft ? -(screenWidth + widthOffset) : screenWidth + widthOffset;
         GameObject newCat = Instantiate(catPrefab, spawnPosition + new Vector2(player.position.x, player.position.y),
-            Quaternion.identity); 
+            Quaternion.identity);
         newCat.transform.localScale = new Vector3(spawnOnLeft ? -1 : 1, 1, 1);
         StartCoroutine(MoveCat(newCat, spawnOnLeft));
     }
@@ -78,6 +78,7 @@ public class CatSpawner : MonoBehaviour
         GameObject newCatShadow = Instantiate(catShadow,
             cat.transform.position, Quaternion.identity);
         newCatShadow.transform.rotation = cat.transform.rotation;
+        newCatShadow.transform.localScale = new Vector3(spawnOnLeft ? -1 : 1, 1, 1);
 
         Vector2 screenMiddle = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2));
 
