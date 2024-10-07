@@ -2950,50 +2950,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &150491385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 150491386}
-  - component: {fileID: 150491387}
-  m_Layer: 0
-  m_Name: AppleSpawnPoint (4)
-  m_TagString: spawner
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &150491386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150491385}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.6824737, y: -29.109566, z: 0.31179082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1054718641}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &150491387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150491385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e516bf53f25fc4e03abed638277ed1f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &151142686
 GameObject:
   m_ObjectHideFlags: 0
@@ -13989,8 +13945,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.6570262, w: 0.7538678}
   m_LocalPosition: {x: -2.68, y: -0.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 40939542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 82.147}
@@ -14094,21 +14050,28 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.49499997, y: 0.445}
-      - {x: 0.475, y: 0.48499998}
-      - {x: 0.305, y: 0.48499998}
-      - {x: -0.085, y: 0.375}
-      - {x: -0.24499999, y: 0.325}
-      - {x: -0.49499997, y: 0.255}
-      - {x: -0.505, y: 0.235}
-      - {x: -0.505, y: 0.205}
-      - {x: -0.49499997, y: 0.175}
-      - {x: -0.015, y: -0.39499998}
-      - {x: 0.065, y: -0.48499998}
-      - {x: 0.145, y: -0.48499998}
-      - {x: 0.415, y: -0.36499998}
-      - {x: 0.505, y: -0.315}
-      - {x: 0.505, y: 0.405}
+    - - {x: 0.28, y: -0.315}
+      - {x: 0.29999998, y: -0.24499999}
+      - {x: 0.55, y: -0.345}
+      - {x: 0.72999996, y: -0.385}
+      - {x: 0.90999997, y: -0.385}
+      - {x: 0.91999996, y: -0.315}
+      - {x: 1.11, y: -0.305}
+      - {x: 1.13, y: -0.285}
+      - {x: 1.13, y: -0.185}
+      - {x: 1.06, y: -0.095}
+      - {x: 0.65999997, y: 0.285}
+      - {x: 0.34, y: 0.345}
+      - {x: -0.53999996, y: 0.345}
+      - {x: -0.66999996, y: 0.285}
+      - {x: -1.15, y: 0.005}
+      - {x: -1.22, y: -0.155}
+      - {x: -1.22, y: -0.315}
+      - {x: -1.15, y: -0.385}
+      - {x: -0.84999996, y: -0.385}
+      - {x: -0.72999996, y: -0.315}
+      - {x: -0.71, y: -0.24499999}
+      - {x: -0.35, y: -0.305}
   m_UseDelaunayMesh: 0
 --- !u!1 &1008422328
 GameObject:
@@ -14798,6 +14761,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1034667800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034667801}
+  - component: {fileID: 1034667802}
+  m_Layer: 0
+  m_Name: AppleSpawnPoint (4)
+  m_TagString: spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1034667801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034667800}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19, y: -3.1, z: 0.31179082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1054718641}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1034667802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034667800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e516bf53f25fc4e03abed638277ed1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035559117
 GameObject:
   m_ObjectHideFlags: 0
@@ -14828,7 +14835,7 @@ Transform:
   m_GameObject: {fileID: 1035559117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.28, y: 24.68, z: 0}
+  m_LocalPosition: {x: 1.28, y: 18.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15584,10 +15591,7 @@ Transform:
   - {fileID: 1935533298}
   - {fileID: 1112959827}
   - {fileID: 1578846376}
-  - {fileID: 150491386}
-  - {fileID: 1529051416}
-  - {fileID: 1953858098}
-  - {fileID: 1679180910}
+  - {fileID: 1034667801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061349743
@@ -16612,7 +16616,7 @@ Transform:
   m_GameObject: {fileID: 1112959825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.082474, y: -7.209567, z: 0.31179082}
+  m_LocalPosition: {x: 10.082474, y: -4.9, z: 0.31179082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21892,7 +21896,7 @@ Transform:
   m_GameObject: {fileID: 1415706511}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.217527, y: 5.590433, z: 0.31179082}
+  m_LocalPosition: {x: -23.217527, y: 4, z: 0.31179082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23977,50 +23981,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1529051415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1529051416}
-  - component: {fileID: 1529051417}
-  m_Layer: 0
-  m_Name: AppleSpawnPoint (5)
-  m_TagString: spawner
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1529051416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529051415}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.282473, y: -32.209564, z: 0.31179082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1054718641}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1529051417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529051415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e516bf53f25fc4e03abed638277ed1f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1543306732
 GameObject:
   m_ObjectHideFlags: 0
@@ -24708,7 +24668,7 @@ Transform:
   m_GameObject: {fileID: 1578846375}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.482473, y: -5.709567, z: 0.31179082}
+  m_LocalPosition: {x: 23.4, y: 3, z: 0.31179082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25767,50 +25727,6 @@ Transform:
   - {fileID: 666884355}
   m_Father: {fileID: 1350905131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1679180909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1679180910}
-  - component: {fileID: 1679180911}
-  m_Layer: 0
-  m_Name: AppleSpawnPoint (6)
-  m_TagString: spawner
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1679180910
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679180909}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.417526, y: -15.209567, z: 0.31179082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1054718641}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1679180911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679180909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e516bf53f25fc4e03abed638277ed1f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1700424277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29389,7 +29305,7 @@ Transform:
   m_GameObject: {fileID: 1935533296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2175262, y: 1.6904335, z: 0.31179082}
+  m_LocalPosition: {x: -2.2175262, y: -7, z: 0.31179082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29878,50 +29794,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1953858097
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1953858098}
-  - component: {fileID: 1953858099}
-  m_Layer: 0
-  m_Name: AppleSpawnPoint (7)
-  m_TagString: spawner
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1953858098
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953858097}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.2175255, y: -36.709564, z: 0.31179082}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1054718641}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1953858099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953858097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e516bf53f25fc4e03abed638277ed1f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1962251482
 GameObject:
   m_ObjectHideFlags: 0

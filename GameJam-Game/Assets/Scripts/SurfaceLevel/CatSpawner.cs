@@ -47,7 +47,6 @@ public class CatSpawner : MonoBehaviour
         while (true)
         {
             currentTimefactor -= timeFactor; 
-            Debug.Log(currentTimefactor);
             if (canSpawn)
             {
                 var spawnPause = Random.Range(minSpawnPause, maxSpawnPause) * currentTimefactor;

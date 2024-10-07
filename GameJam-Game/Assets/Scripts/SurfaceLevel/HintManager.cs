@@ -39,7 +39,7 @@ namespace Nidavellir
 
             yield return new WaitForSeconds(1);
 
-            _hintText.text = "Find an Apple and use [E] to bite of a piece.";
+            _hintText.text = "Find an Apple and use [E] to bite off a piece.";
             next = false;
             yield return new WaitForSeconds(1);
             while (!next)
