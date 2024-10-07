@@ -13,11 +13,16 @@ namespace Nidavellir
         [SerializeField] private Resource m_foodResource;
         public GameObject m_applePiece;
         
+        public AudioClip m_appleDeliveredSound;
+        public AudioClip m_applePickupSound;
+        public AudioClip m_appleDropSound;
+        private AudioSource m_audioSource;
 
         private void Start()
         {
             m_inputProcessor = FindObjectOfType<InputProcessor>();
             m_currentPiece.SetActive(false);
+            m_audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -26,6 +31,8 @@ namespace Nidavellir
             {
                  m_apple.GetComponentInParent<AppleManager>().TakeBite(); 
                  m_currentPiece.SetActive(true);
+                 m_audioSource.clip = m_applePickupSound;
+                 m_audioSource.Play();
                  hasCurrentPiece = true;
             } else if (m_inputProcessor.InteractTriggered && hasCurrentPiece)
             {
@@ -48,6 +55,8 @@ namespace Nidavellir
                 hasCurrentPiece = false;
                 m_currentPiece.SetActive(false);
                 this.m_foodResource.ResourceController.Add(1);
+                m_audioSource.clip = m_appleDeliveredSound;
+                m_audioSource.Play();
             }
         }
 
@@ -72,6 +81,8 @@ namespace Nidavellir
             var applePiece = Instantiate(m_applePiece, m_currentPiece.transform.position, Quaternion.identity);
             applePiece.AddComponent<AppleManager>().pieces = 1;
             hasCurrentPiece = false;
+            m_audioSource.clip = m_appleDropSound;
+            m_audioSource.Play();
         }
     }
 }

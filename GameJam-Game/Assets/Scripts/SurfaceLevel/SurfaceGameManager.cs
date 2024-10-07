@@ -19,6 +19,9 @@ namespace Nidavellir
 
         private bool canLoseLife = true;
         public InputProcessor m_playerInputProcessor;
+        
+        public AudioSource m_audioSource;
+        public AudioClip m_gameOverClip;
 
         void Start()
         {
@@ -43,7 +46,8 @@ namespace Nidavellir
                 {
                     PlayerPrefs.SetFloat("HighScore", resource.ResourceController.CurrentValue);    
                 }
-                SceneManager.LoadScene("GameOver");
+
+                StartCoroutine(GameLost());
             }
             else
             {
@@ -52,16 +56,17 @@ namespace Nidavellir
             }
         }
 
-        private IEnumerator Restart()
+        private IEnumerator GameLost()
         {
-            lifeText.enabled = true;
-            lifeText.text = "3";
-            yield return new WaitForSeconds(0.5f);
-            lifeText.text = "2";
-            yield return new WaitForSeconds(0.5f);
-            lifeText.text = "1";
-            yield return new WaitForSeconds(0.5f);
-            lifeText.enabled = false;
+            m_audioSource.clip = m_gameOverClip;
+            m_audioSource.Play();
+            yield return new WaitForSeconds(m_gameOverClip.length);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        private IEnumerator Restart()
+        { 
+            yield return new WaitForSeconds(0.5f); 
             blood.SetActive(false);
             FindFirstObjectByType<CatSpawner>().canSpawn = true;
             canLoseLife = true;

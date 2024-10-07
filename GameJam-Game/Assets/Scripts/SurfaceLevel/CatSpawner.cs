@@ -25,11 +25,16 @@ public class CatSpawner : MonoBehaviour
     public Transform player;
 
     public GameObject catShadow;
+    
+    private AudioSource audioSource;
+    public AudioClip attackClip;
+    public AudioClip shadowClip;
 
     void Start()
     {
         screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
         screenHeight = Camera.main.orthographicSize;
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(SpawnCatRoutine());
     }
@@ -62,6 +67,8 @@ public class CatSpawner : MonoBehaviour
 
     IEnumerator MoveCat(GameObject cat)
     {
+        audioSource.clip = shadowClip;
+        audioSource.Play();
         var delay = Random.Range(minAttackDelay, maxAttackDelay);
         GameObject newCatShadow = Instantiate(catShadow,
             cat.transform.position, Quaternion.identity);
@@ -88,6 +95,8 @@ public class CatSpawner : MonoBehaviour
         }
 
         Destroy(newCatShadow);
+        audioSource.clip = attackClip;
+        audioSource.Play();
         while (cat != null)
         {
             cat.transform.Translate(Vector2.down * (moveSpeed * Time.deltaTime));

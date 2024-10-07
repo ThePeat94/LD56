@@ -29,9 +29,15 @@ namespace Nidavellir
 
         public Animator spriteAnimator;
 
+        private AudioSource audioSource;
+        public AudioClip lifeLost;
+        public AudioClip boost;
+        public AudioClip boostFail;
+
         void Start()
         {
             m_rb = GetComponent<Rigidbody2D>();
+            audioSource = GetComponent<AudioSource>();
             m_inputProcessor = GetComponent<InputProcessor>();
             blood.SetActive(false);
             boostText.text = "Boost available";
@@ -46,6 +52,8 @@ namespace Nidavellir
                 isBoosting = true;
                 GetComponent<GatherFood>().DropCurrentPiece();
                 boostTimer = boostDuration;
+                audioSource.clip = boost;
+                audioSource.Play();
                 boostText.text = "Boosting!";
             }
 
@@ -67,42 +75,45 @@ namespace Nidavellir
             }
 
             m_rb.MovePosition(m_rb.position + m_inputProcessor.Movement * (actualSpeed * Time.fixedDeltaTime));
-            
+
             if (m_inputProcessor.Movement == Vector2.down)
             {
                 spriteAnimator.SetInteger("direction", 0);
-            } else if (m_inputProcessor.Movement == Vector2.up)
+            }
+            else if (m_inputProcessor.Movement == Vector2.up)
             {
                 spriteAnimator.SetInteger("direction", 3);
-            } else if (m_inputProcessor.Movement == Vector2.left)
+            }
+            else if (m_inputProcessor.Movement == Vector2.left)
             {
                 spriteAnimator.SetInteger("direction", 1);
-            } else if (m_inputProcessor.Movement == Vector2.right)
+            }
+            else if (m_inputProcessor.Movement == Vector2.right)
             {
                 spriteAnimator.SetInteger("direction", 2);
-            } else if (m_inputProcessor.Movement == Vector2.zero)
+            }
+            else if (m_inputProcessor.Movement == Vector2.zero)
             {
                 spriteAnimator.SetInteger("direction", 5);
             }
 
-            if (m_inputProcessor.IsBoosting && boostTimer <= 0f)
-
-                if (cooldownTimer > 0f)
+            if (cooldownTimer > 0f)
+            {
+                if (m_inputProcessor.IsBoosting)
                 {
-                    if (m_inputProcessor.IsBoosting)
-                    {
-                        boostText.color = Color.red;
-                        boostText.fontStyle = FontStyles.Bold;
-                    }
-                    else
-                    {
-                        boostText.color = Color.white;
-                        boostText.fontStyle = FontStyles.Normal;
-                    }
-
-                    boostText.text = "Next Boost in " + Mathf.Floor(cooldownTimer) + " seconds";
-                    cooldownTimer -= Time.fixedDeltaTime;
+                    boostText.color = Color.red;
+                    boostText.fontStyle = FontStyles.Bold; 
+                    audioSource.PlayOneShot(boostFail, 0.1f); 
                 }
+                else
+                {
+                    boostText.color = Color.white;
+                    boostText.fontStyle = FontStyles.Normal;
+                }
+
+                boostText.text = "Next Boost in " + Mathf.Floor(cooldownTimer) + " seconds";
+                cooldownTimer -= Time.fixedDeltaTime;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -114,6 +125,8 @@ namespace Nidavellir
                 blood.SetActive(true);
                 m_inputProcessor.enabled = false;
                 gameManager.LooseLife();
+                audioSource.clip = lifeLost;
+                audioSource.Play();
                 GetComponent<GatherFood>().RemoveCurrentPiece();
             }
         }
