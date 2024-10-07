@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class CatSpawner : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject catPrefab;
+    [SerializeField] public GameObject catPrefab;
 
     public float minSpawnPause = 10f;
     public float maxSpawnPause = 20f;
     public float timeFactor = 0.00001f;
     public float timeFactorSpeed = 0.00005f;
-    private float currentTimefactor = 1; 
+    private float currentTimefactor = 1;
 
     public float minAttackDelay = 0.5f;
     public float maxAttackDelay = 2.0f;
@@ -28,7 +27,7 @@ public class CatSpawner : MonoBehaviour
     public Transform player;
 
     public GameObject catShadow;
-    
+
     private AudioSource audioSource;
     public AudioClip attackClip;
     public AudioClip shadowClip;
@@ -46,7 +45,7 @@ public class CatSpawner : MonoBehaviour
     {
         while (true)
         {
-            currentTimefactor -= timeFactor; 
+            currentTimefactor -= timeFactor;
             if (canSpawn)
             {
                 var spawnPause = Random.Range(minSpawnPause, maxSpawnPause) * currentTimefactor;
@@ -65,12 +64,12 @@ public class CatSpawner : MonoBehaviour
         spawnPosition.y = Random.Range(-(screenHeight - heightOffset), screenHeight - heightOffset);
         spawnPosition.x = spawnOnLeft ? -(screenWidth + widthOffset) : screenWidth + widthOffset;
         GameObject newCat = Instantiate(catPrefab, spawnPosition + new Vector2(player.position.x, player.position.y),
-            Quaternion.identity);
-        newCat.transform.rotation = Quaternion.Euler(0, 0, spawnOnLeft ? 90 : -90);
-        StartCoroutine(MoveCat(newCat));
+            Quaternion.identity); 
+        newCat.transform.localScale = new Vector3(spawnOnLeft ? -1 : 1, 1, 1);
+        StartCoroutine(MoveCat(newCat, spawnOnLeft));
     }
 
-    IEnumerator MoveCat(GameObject cat)
+    IEnumerator MoveCat(GameObject cat, bool spawnOnLeft)
     {
         audioSource.clip = shadowClip;
         audioSource.Play();
@@ -87,7 +86,7 @@ public class CatSpawner : MonoBehaviour
         while (elapsedTime < delay)
         {
             float step = shadowSpeed * Time.deltaTime;
-            newCatShadow.transform.Translate(Vector2.down * step);
+            newCatShadow.transform.Translate(spawnOnLeft ? Vector3.right : Vector3.left * step);
 
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / delay);
             var spriteRenderer = newCatShadow.GetComponentInChildren<SpriteRenderer>();
