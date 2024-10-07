@@ -21570,8 +21570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73def816b3167435aa0d3dc1767029e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  boostMultiplier: 5
+  speed: 12
+  boostMultiplier: 2
   boostDuration: 0.2
   boostCooldown: 4
   boostText: {fileID: 130362090}
