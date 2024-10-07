@@ -33,8 +33,6 @@ namespace Nidavellir
         public void TakeBite()
         {
             piecesLeft--;
-            
-            Debug.Log(piecesLeft);
 
             if (piecesLeft <= 0 || applePieces == null || applePieces.Length == 0)
             {

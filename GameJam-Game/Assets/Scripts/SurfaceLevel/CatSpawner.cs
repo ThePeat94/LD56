@@ -8,6 +8,7 @@ public class CatSpawner : MonoBehaviour
 
     public float minSpawnPause = 5f;
     public float maxSpawnPause = 10f;
+    private float timeFactor = 1;
 
     public float minAttackDelay = 0.5f;
     public float maxAttackDelay = 2.0f;
@@ -43,9 +44,12 @@ public class CatSpawner : MonoBehaviour
     {
         while (true)
         {
+            timeFactor -= Time.deltaTime;
+            Debug.Log(timeFactor);
             if (canSpawn)
             {
-                yield return new WaitForSeconds(Random.Range(minSpawnPause, maxSpawnPause));
+                var spawnPause = Random.Range(minSpawnPause, maxSpawnPause) * timeFactor;
+                yield return new WaitForSeconds(spawnPause);
                 SpawnCat();
             }
 
