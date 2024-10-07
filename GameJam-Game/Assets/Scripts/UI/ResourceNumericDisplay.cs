@@ -36,13 +36,13 @@ namespace Nidavellir.UI
 
         private void UpdateText()
         {
-            this.m_textDisplay.text = $"{this.m_toDisplay.ResourceController.CurrentValue:F2}";
+            this.m_textDisplay.text = $"{(int)Math.Floor(this.m_toDisplay.ResourceController.CurrentValue)}";
             var highScore = PlayerPrefs.GetFloat("HighScore", 0);
             if (this.m_toDisplay.ResourceController.CurrentValue > highScore)
             {
                 highScore = this.m_toDisplay.ResourceController.CurrentValue;
             }
-            this.m_valueDisplay.text = $"{highScore:F2}";
+            this.m_valueDisplay.text = $"{(int)Math.Floor(highScore)}";
         }
 
         private void OnMaximumValueChanged(object sender, ResourceValueChangedEventArgs e)

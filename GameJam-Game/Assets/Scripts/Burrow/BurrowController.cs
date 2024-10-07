@@ -1,3 +1,4 @@
+using System;
 using Nidavellir.GameEventBus;
 using Nidavellir.GameEventBus.EventBinding;
 using Nidavellir.GameEventBus.Events;
@@ -25,7 +26,12 @@ namespace Nidavellir.Burrow
             GameEventBus<SleepingRoomPlacedEvent>.Register(this.m_sleepingRoomPlacedBinding);
             GameEventBus<BurrowMateGroupAddedEvent>.Register(this.m_burrowMateGroupAcceptedBinding);
         }
-        
+
+        private void Start()
+        {
+            this.m_foodResource.ResourceController.ResetValues();
+        }
+
         private void OnFoodRoomPlaced(FoodRoomPlacedEvent e)
         {
             this.m_foodResource.ResourceController.ApplyDeltaToMaximumValue(e.FoodAmount);

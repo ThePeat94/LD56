@@ -27,6 +27,7 @@ namespace Nidavellir
 
         void Start()
         {
+            this.resource.ResourceController.ResetValues();
             currentLife = maxLifeCount;
             foreach (var points in lifeUI)
             {
