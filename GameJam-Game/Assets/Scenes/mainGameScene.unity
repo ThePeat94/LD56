@@ -45007,8 +45007,8 @@ MonoBehaviour:
   maxSpawnPause: 15
   timeFactor: 0.00001
   timeFactorSpeed: 0.00005
-  minAttackDelay: 1
-  maxAttackDelay: 2
+  minAttackDelay: 0.5
+  maxAttackDelay: 1
   moveSpeed: 50
   widthOffset: 20
   heightOffset: 5
